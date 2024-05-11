@@ -3,7 +3,8 @@
 #include <algorithm>
 #include <ctime>
 #include <cstdlib>
-// WE NEED TO WORK ON MAKING CLASSES/THE CARDS
+using namespace std;
+
 class Card {
 public:
     enum Suit {HEARTS, DIAMONDS, CLUBS, SPADES};
@@ -47,7 +48,7 @@ public:
     }
 
     void shuffle() {
-        std::random_shuffle(cards.begin(), cards.end());
+        //std::random_shuffle(cards.begin(), cards.end());
     }
 
     Card dealCard() {
