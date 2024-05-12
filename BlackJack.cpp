@@ -55,7 +55,7 @@ void BlackJack::playerTurn(Player* player) {
         std::cout << "Choose your move:" << std::endl;
         std::cout << "1. Hit" << std::endl;
         std::cout << "2. Stand" << std::endl;
-        std::cout << "3. Poker Move" << std::endl;
+        std::cout << "3. Surrender" << std::endl; // Added option for surrender
         std::cin >> choice;
 
         switch (choice) {
@@ -65,10 +65,11 @@ void BlackJack::playerTurn(Player* player) {
             case 2:
                 return; // Player chooses to stand
             case 3:
-                // Implement poker move logic here
-                // For example, check if the player has a pair, flush, etc.
-                // If a poker move is made, set hasPokerMove to true
-                break;
+                // Player chooses to surrender
+                std::cout << player->getName() << " surrenders!" << std::endl;
+                // Forfeit half of the bet and end the round
+                // Implement logic to handle surrender here
+                return;
             default:
                 std::cout << "Invalid choice. Please try again." << std::endl;
         }
