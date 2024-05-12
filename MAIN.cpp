@@ -2,11 +2,11 @@
 #include "BlackJack.h"
 
 int main() {
-    std::cout << "Welcome to Blackjack!" << std::endl;
+    std::cout << "Welcome to Blackjack 340!" << std::endl;
 
     // Get the number of players from the user
     int numPlayers;
-    std::cout << "Enter the number of players (including yourself): ";
+    std::cout << "Enter the number of players (including yourself): *MAX 4*";
     std::cin >> numPlayers;
 
     // Create an instance of the Blackjack game
