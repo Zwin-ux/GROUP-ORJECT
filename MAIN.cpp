@@ -6,7 +6,7 @@ int main() {
 
     // Get the number of players from the user
     int numPlayers;
-    std::cout << "Enter the number of players (including yourself): ";
+    std::cout << "Enter the number of players (including yourself: max 4 players): ";
     std::cin >> numPlayers;
 
     // Create an instance of the Blackjack game
