@@ -1,20 +1,17 @@
-// Card.h
 #ifndef CARD_H
 #define CARD_H
 
+#include <iostream>
+#include <string>
+
 class Card {
-public:
-    enum Suit {HEARTS, DIAMONDS, CLUBS, SPADES};
-    enum Rank {ACE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING};
-
-    Card(Suit s, Rank r);
-
-    int getValue() const;
-    void display() const;
-
 private:
-    Suit suit;
-    Rank rank;
+    std::string suit;
+    std::string rank;
+public:
+    Card(std::string suit, std::string rank);
+    void display();
+    int getValue();
 };
 
-#endif // CARD_H
+#endif

@@ -1,19 +1,19 @@
-// Deck.h
 #ifndef DECK_H
 #define DECK_H
 
-#include "card.h"
-#include <vector>
+#include "card.h" // Assuming the correct filename is "Card.h"
+#include <list>
 
 class Deck {
+private:
+    std::list<Card*> cards;
 public:
     Deck();
-
+    ~Deck();
+    void initialize();
     void shuffle();
-    Card dealCard();
-
-private:
-    std::vector<Card> cards;
+    Card* dealCard();
+    int cardsLeft();
 };
 
-#endif // DECK_H
+#endif

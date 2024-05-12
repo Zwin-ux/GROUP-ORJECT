@@ -1,24 +1,37 @@
 #include "BlackJack.h"
-using namespace std;
-#include <iostream> // Ensure <iostream> is included
+#include <iostream>
 
-Blackjack::Blackjack(int numPlayers) : numPlayers(numPlayers) {
-    for (int i = 0; i < numPlayers; ++i) {
-        players.push_back(Player());
+BlackJack::BlackJack(int numPlayers) {
+    deck = new Deck();
+    dealer = new Player("Dealer");
+    this->numPlayers = numPlayers;
+    currentPlayerIndex = 0;
+}
+
+BlackJack::~BlackJack() {
+    delete deck;
+    delete dealer;
+    for (auto player : players) {
+        delete player;
     }
 }
 
-void Blackjack::play() {
-    Deck deck;
-    for (int i = 0; i < 2; ++i) {
-        for (Player& player : players) {
-            player.addCard(deck.dealCard());
-        }
-    }
+void BlackJack::startGame() {
+    // Implement the startGame function
+}
 
-    for (Player& player : players) {
-        std::cout << "Player " << (&player - &players[0] + 1) << " hand:" << std::endl;
-        player.displayHand();
-        std::cout << std::endl;
-    }
+void BlackJack::dealInitialCards() {
+    // Implement the dealInitialCards function
+}
+
+void BlackJack::playerTurn(Player* player) {
+    // Implement the playerTurn function
+}
+
+void BlackJack::dealerTurn() {
+    // Implement the dealerTurn function
+}
+
+void BlackJack::determineWinner() {
+    // Implement the determineWinner function
 }

@@ -1,20 +1,21 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <list>
 #include "card.h"
-#include <vector>
 
 class Player {
-public:
-    Player();
-
-    void addCard(const Card& card);
-    void displayHand() const;
-    int getTotalScore() const;
-
 private:
-    std::vector<Card> hand;
-    int totalScore;
+    std::string name;
+    std::list<Card*> hand;
+public:
+    Player(std::string name);
+    ~Player();
+    void addToHand(Card* card);
+    void displayHand();
+    int calculateTotal();
+    std::string getName() const; // Declaration
+
 };
 
-#endif // PLAYER_H
+#endif

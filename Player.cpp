@@ -1,21 +1,33 @@
 #include "Player.h"
 #include <iostream>
 
-Player::Player() : totalScore(0) {}
-
-void Player::addCard(const Card& card) {
-    hand.push_back(card);
-    totalScore += card.getValue();
+Player::Player(std::string name) {
+    this->name = name;
 }
 
-void Player::displayHand() const {
-    for (const Card& card : hand) {
-        card.display();
-        std::cout << std::endl;
+Player::~Player() {
+    for (auto card : hand) {
+        delete card;
     }
-    std::cout << "Total Score: " << totalScore << std::endl;
 }
 
-int Player::getTotalScore() const {
-    return totalScore;
+void Player::addToHand(Card* card) {
+    hand.push_back(card);
+}
+
+void Player::displayHand() {
+    std::cout << name << "'s hand: ";
+    for (auto card : hand) {
+        card->display();
+        std::cout << ", ";
+    }
+    std::cout << std::endl;
+}
+
+int Player::calculateTotal() {
+    // Calculate the total value of the player's hand
+    return 0;
+}
+std::string Player::getName() const {
+    return name;
 }

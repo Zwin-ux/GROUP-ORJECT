@@ -1,18 +1,19 @@
-#include "BlackJack.h"
 #include <iostream>
+#include "BlackJack.h"
 
 int main() {
+    std::cout << "Welcome to Blackjack!" << std::endl;
+
+    // Get the number of players from the user
     int numPlayers;
-    std::cout << "Enter number of players (2-4): ";
+    std::cout << "Enter the number of players (including yourself): ";
     std::cin >> numPlayers;
 
-    if (numPlayers < 2 || numPlayers > 4) {
-        std::cerr << "Invalid number of players!" << std::endl;
-        return 1;
-    }
+    // Create an instance of the Blackjack game
+    BlackJack game(numPlayers);
 
-    Blackjack game(numPlayers);
-    game.play();
+    // Start the game
+    game.startGame();
 
     return 0;
 }
