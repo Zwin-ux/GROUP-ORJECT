@@ -14,15 +14,7 @@ Deck::~Deck() {
 }
 
 void Deck::initialize() {
-    // Clear existing cards
-    cards.clear();
 
-    // Create and add cards to the deck
-    for (int suit = 0; suit < Card::SUITS_COUNT; ++suit) {
-        for (int rank = 0; rank < Card::RANKS_COUNT; ++rank) {
-            cards.push_back(new Card(Card::SUITS[suit], Card::RANKS[rank]));
-        }
-    }
 }
 
 void Deck::shuffle() {
