@@ -15,19 +15,27 @@ Deck::~Deck() {
 
 void Deck::initialize() {
     // Create and add cards to the deck
-    // Add logic to create all 52 cards
+    for (int suit = 0; suit < Card::SUITS_COUNT; ++suit) {
+        for (int rank = 0; rank < Card::RANKS_COUNT; ++rank) {
+            cards.push_back(new Card(Card::SUITS[suit], Card::RANKS[rank]));
+        }
+    }
 }
 
 void Deck::shuffle() {
     // Shuffle the deck
-    std::srand(std::time(0));
-    //std::random_shuffle(cards.begin(), cards.end());
+    std::srand(static_cast<unsigned int>(std::time(0)));
+    std::random_shuffle(cards.begin(), cards.end());
 }
 
 Card* Deck::dealCard() {
     // Remove and return a card from the deck
-    // Remove it from the linked list and return
-    return nullptr;
+    if (cards.empty()) {
+        return nullptr; // No cards left in the deck
+    }
+    Card* dealtCard = cards.back();
+    cards.pop_back();
+    return dealtCard;
 }
 
 int Deck::cardsLeft() {
