@@ -17,22 +17,7 @@ BlackJack::~BlackJack() {
 }
 
 void BlackJack::startGame() {
-    // Shuffle the deck
-    deck->shuffle();
-    
-    // Deal initial cards to each player including the dealer
-    dealInitialCards();
-    
-    // Players take turns
-    for (int i = 0; i < numPlayers; ++i) {
-        playerTurn(players[i]);
-    }
-    
-    // Dealer's turn
-    dealerTurn();
-    
-    // Determine the winner
-    determineWinner();
+    // Implement the startGame function
 }
 
 void BlackJack::dealInitialCards() {
