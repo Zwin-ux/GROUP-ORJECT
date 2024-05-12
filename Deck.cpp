@@ -3,7 +3,7 @@
 #include <ctime>
 #include <cstdlib>
 
-Deck::Deck() {
+Deck::Deck() : nextCardIndex(0) {
     initialize();
 }
 
@@ -14,6 +14,9 @@ Deck::~Deck() {
 }
 
 void Deck::initialize() {
+    // Clear existing cards
+    cards.clear();
+
     // Create and add cards to the deck
     for (int suit = 0; suit < Card::SUITS_COUNT; ++suit) {
         for (int rank = 0; rank < Card::RANKS_COUNT; ++rank) {
@@ -23,22 +26,23 @@ void Deck::initialize() {
 }
 
 void Deck::shuffle() {
-    // Shuffle the deck
+    // Shuffle the deck using Fisher-Yates algorithm
     std::srand(static_cast<unsigned int>(std::time(0)));
-    std::random_shuffle(cards.begin(), cards.end());
+    for (int i = cards.size() - 1; i > 0; --i) {
+        int j = std::rand() % (i + 1);
+        std::swap(cards[i], cards[j]);
+    }
 }
 
 Card* Deck::dealCard() {
-    // Remove and return a card from the deck
-    if (cards.empty()) {
+    // Deal a card from the deck
+    if (nextCardIndex >= cards.size()) {
         return nullptr; // No cards left in the deck
     }
-    Card* dealtCard = cards.back();
-    cards.pop_back();
-    return dealtCard;
+    return cards[nextCardIndex++];
 }
 
-int Deck::cardsLeft() {
+int Deck::cardsLeft() const {
     // Return the number of cards left in the deck
-    return cards.size();
+    return cards.size() - nextCardIndex;
 }
