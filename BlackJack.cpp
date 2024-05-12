@@ -18,7 +18,7 @@ BlackJack::~BlackJack() {
 }
 
 void BlackJack::startGame() {
-    // Shuffle the deck
+   // Shuffle the deck
     deck->shuffle();
 
    do {
