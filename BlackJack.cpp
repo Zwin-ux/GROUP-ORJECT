@@ -21,34 +21,34 @@ void BlackJack::startGame() {
     // Shuffle the deck
     deck->shuffle();
 
-    // Create players and deal initial cards
-    for (int i = 0; i < 4; ++i) { // Max number of players is set to 4
-        if (i >= numPlayers) {
-            break;
+   do {
+        std::cout << "Enter the number of players (maximum 4): ";
+        std::cin >> numPlayers;
+        if (numPlayers <= 0 || numPlayers > 4) {
+            std::cout << "Invalid number of players. Please enter a number between 1 and 4.\n";
         }
+    } while (numPlayers <= 0 || numPlayers > 4);
 
+    // Create players
+    for (int i = 0; i < numPlayers; ++i) {
         std::string playerName;
         std::cout << "Enter name for Player " << i + 1 << ": ";
         std::cin >> playerName;
-
         players.push_back(new Player(playerName));
     }
-     if (numPlayers > 4) {
-        std::cout << "Only 4 players can play. Adding more players will be ignored." << std::endl;
-    } else {
-        dealInitialCards();
 
-        // Player turns
-        for (int i = 0; i < numPlayers; ++i) {
-            playerTurn(players[i]);
-        }
-
-        // Dealer's turn
-        dealerTurn();
-
-        // Determine the winner
-        determineWinner();
+    // Deal initial cards
+    dealInitialCards();
+    // Player turns
+    for (int i = 0; i < numPlayers; ++i) {
+        playerTurn(players[i]);
     }
+
+    // Dealer's turn
+    dealerTurn();
+
+    // Determine the winner
+    determineWinner();
 }
 
 
