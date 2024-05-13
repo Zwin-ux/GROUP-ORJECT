@@ -6,7 +6,21 @@ Card::Card(std::string suit, std::string rank) {
 }
 
 void Card::display() {
-    std::cout << rank << " of " << suit;
+    // Unicode symbols for card suits
+    std::string suitSymbol;
+    if (suit == "Hearts") {
+        suitSymbol = "\u2665"; // Heart symbol
+    } else if (suit == "Diamonds") {
+        suitSymbol = "\u2666"; // Diamond symbol
+    } else if (suit == "Clubs") {
+        suitSymbol = "\u2663"; // Club symbol
+    } else if (suit == "Spades") {
+        suitSymbol = "\u2660"; // Spade symbol
+    } else {
+        suitSymbol = "Invalid Suit"; // Handle invalid suit
+    }
+
+    std::cout << rank << " of " << suitSymbol << std::endl;
 }
 
 int Card::getValue() {
