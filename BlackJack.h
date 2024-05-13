@@ -20,6 +20,7 @@ public:
     void playerTurn(Player* player);
     void dealerTurn();
     void determineWinner();
+    void displayHands();
 };
 
 #endif

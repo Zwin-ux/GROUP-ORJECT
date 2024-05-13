@@ -16,8 +16,7 @@ void Player::addToHand(Card* card) {
 }
 
 void Player::displayHand() {
-    std::cout << name << "'s hand: ";
-    for (auto card : hand) {
+     for (auto card : hand) {
         card->display();
         std::cout << ", ";
     }

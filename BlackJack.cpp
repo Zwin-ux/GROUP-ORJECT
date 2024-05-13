@@ -1,6 +1,8 @@
 #include "BlackJack.h"
 #include <iostream>
 #include "card.h"
+#include "Player.h"
+#include "Deck.h"
 
 BlackJack::BlackJack(int numPlayers) {
     deck = new Deck();
@@ -39,6 +41,7 @@ void BlackJack::startGame() {
 
     // Deal initial cards
     dealInitialCards();
+    displayHands();
     // Player turns
     for (int i = 0; i < numPlayers; ++i) {
         playerTurn(players[i]);
@@ -53,8 +56,34 @@ void BlackJack::startGame() {
 
 
 void BlackJack::dealInitialCards() {
-  
-}
+   // Deal two cards to each player, including the dealer
+    for (int i = 0; i < 2; ++i) {
+        for (auto& player : players) {
+            Card* card = deck->dealCard();
+            if (card != nullptr) {
+                player->addToHand(card);
+                std::cout << player->getName() << " is dealt: ";
+                card->display(); // Display the card
+                std::cout << std::endl;
+            } else {
+                // Handle case when there are no more cards in the deck
+                // reshuffle the deck or end the game
+            }
+        }
+        // Dealer's turn
+        Card* card = deck->dealCard();
+        if (card != nullptr) {
+            dealer->addToHand(card);
+            std::cout << "Dealer is dealt: ";
+            card->display(); // Display the card
+            std::cout << std::endl;
+        } else {
+            // Handle case when there are no more cards in the deck
+            // reshuffle the deck or end the game
+            
+        }
+    }
+} 
 
 void BlackJack::playerTurn(Player* player) {
     std::cout << player->getName() << "'s turn:" << std::endl;
@@ -124,4 +153,16 @@ void BlackJack::determineWinner() {
 }
 
    
+}
+
+void BlackJack::displayHands(){
+    // Display hands of each player
+    for (auto& player : players) {
+        std::cout << player->getName() << "'s hand: ";
+        player->displayHand();
+    }
+
+    // Display dealer's hand
+    std::cout << "Dealer's hand: ";
+    dealer->displayHand(); 
 }
