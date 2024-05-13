@@ -114,7 +114,7 @@ void BlackJack::playerTurn(Player* player) {
 }
 
     
-}
+
 
 void BlackJack::dealerTurn() {
     // Dealer's turn: Hit until total is at least 17
@@ -124,7 +124,7 @@ void BlackJack::dealerTurn() {
 }
 
    
-}
+
 
 void BlackJack::determineWinner() {
     int dealerTotal = dealer->calculateTotal();
@@ -150,9 +150,6 @@ void BlackJack::determineWinner() {
             std::cout << "It's a tie!" << std::endl;
         }
     }
-}
-
-   
 }
 
 void BlackJack::displayHands(){
