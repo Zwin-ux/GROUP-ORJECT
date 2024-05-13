@@ -57,13 +57,71 @@ void BlackJack::dealInitialCards() {
 }
 
 void BlackJack::playerTurn(Player* player) {
+    std::cout << player->getName() << "'s turn:" << std::endl;
+    while (true) {
+        player->displayHand();
+        char choice;
+        std::cout << "Choose your move (H for Hit, S for Stand): ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 'H':
+            case 'h':
+                player->addToHand(deck->dealCard());
+                break;
+            case 'S':
+            case 's':
+                return; // Player chooses to stand
+            default:
+                std::cout << "Invalid choice. Please try again." << std::endl;
+        }
+
+        // Check if the player's hand total exceeds 21
+        if (player->calculateTotal() > 21) {
+            std::cout << player->getName() << " busts!" << std::endl;
+            return;
+        }
+    }
+}
+
     
 }
 
 void BlackJack::dealerTurn() {
+    // Dealer's turn: Hit until total is at least 17
+    while (dealer->calculateTotal() < 17) {
+        dealer->addToHand(deck->dealCard());
+    }
+}
+
    
 }
 
 void BlackJack::determineWinner() {
+    int dealerTotal = dealer->calculateTotal();
+
+    std::cout << "Dealer's hand: ";
+    dealer->displayHand();
+
+    for (auto player : players) {
+        std::cout << player->getName() << "'s hand: ";
+        player->displayHand();
+        int playerTotal = player->calculateTotal();
+
+        if (playerTotal > 21) {
+            std::cout << player->getName() << " busts!" << std::endl;
+            continue;
+        }
+
+        if (dealerTotal > 21 || playerTotal > dealerTotal) {
+            std::cout << player->getName() << " wins!" << std::endl;
+        } else if (playerTotal < dealerTotal) {
+            std::cout << player->getName() << " loses!" << std::endl;
+        } else {
+            std::cout << "It's a tie!" << std::endl;
+        }
+    }
+}
+
    
 }
