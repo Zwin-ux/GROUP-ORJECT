@@ -73,14 +73,20 @@ void BlackJack::dealInitialCards() {
         // Dealer's turn
         Card* card = deck->dealCard();
         if (card != nullptr) {
-            dealer->addToHand(card);
-            std::cout << "Dealer is dealt: ";
-            card->display(); // Display the card
-            std::cout << std::endl;
+            if (i == 0) {
+                // First card of the dealer, hide it
+                std::cout << "Dealer is dealt: Hidden" << std::endl;
+                dealer->addToHand(card); // Add to hand but don't display
+            } else {
+                // Second card of the dealer, display it
+                dealer->addToHand(card);
+                std::cout << "Dealer is dealt: ";
+                card->display(); // Display the card
+                std::cout << std::endl;
+            }
         } else {
             // Handle case when there are no more cards in the deck
             // reshuffle the deck or end the game
-            
         }
     }
 } 
