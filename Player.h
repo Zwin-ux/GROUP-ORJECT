@@ -14,6 +14,7 @@ public:
     void addToHand(Card* card);
     void displayHand();
     int calculateTotal();
+    const std::list<Card*>& getHand() const; // Declaration for accessing hand
     std::string getName() const; // Declaration
 
 };

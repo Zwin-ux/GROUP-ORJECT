@@ -161,5 +161,15 @@ void BlackJack::displayHands(){
 
     // Display dealer's hand
     std::cout << "Dealer's hand: ";
-    dealer->displayHand(); 
+     bool firstCard = true;
+    for (auto& card : dealer->getHand()) {
+        if (firstCard) {
+            std::cout << "Hidden, ";
+            firstCard = false;
+        } else {
+            card->display();
+            std::cout << ", ";
+        }
+    }
+    std::cout << std::endl;
 }

@@ -23,6 +23,10 @@ void Player::displayHand() {
     std::cout << std::endl;
 }
 
+const std::list<Card*>& Player::getHand() const {
+    return hand;
+}
+
 int Player::calculateTotal() {
     int total = 0;
     int numAces = 0;
