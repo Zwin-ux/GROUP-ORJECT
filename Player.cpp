@@ -27,7 +27,7 @@ const std::list<Card*>& Player::getHand() const {
     return hand;
 }
 
-int Player::calculateTotal() {
+int Player::calculateTotal() const{
     int total = 0;
     int numAces = 0;
 
@@ -58,4 +58,9 @@ int Player::calculateTotal() {
 
 std::string Player::getName() const {
     return name;
+}
+
+std::ostream& operator<<(std::ostream& os, const Player& player) {
+    os << player.name << "'s hand total: " << player.calculateTotal();
+    return os;
 }

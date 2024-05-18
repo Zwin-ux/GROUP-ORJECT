@@ -3,6 +3,9 @@
 
 #include <list>
 #include "card.h"
+#include <iostream>
+#include <string>
+
 
 class Player {
 private:
@@ -13,9 +16,10 @@ public:
     ~Player();
     void addToHand(Card* card);
     void displayHand();
-    int calculateTotal();
+    int calculateTotal()const;
     const std::list<Card*>& getHand() const; // Declaration for accessing hand
     std::string getName() const; // Declaration
+    friend std::ostream& operator<<(std::ostream& os, const Player& player);
 
 };
 
